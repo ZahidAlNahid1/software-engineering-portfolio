@@ -31,3 +31,7 @@ Removed or ignored:
 - temporary Office lock files
 
 The original source/course material was otherwise preserved.
+
+## Phase 2 — Migraine Help
+
+The first portfolio-focused modernization pass now includes typed Firebase service boundaries, immutable domain models, Firestore map serialization, model tests, and architecture/security/current-Flutter migration documentation. The dependency baseline remains historical until a Flutter SDK is available to verify the current-SDK migration end to end.

@@ -21,7 +21,7 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-  final Authservice _auth = Authservice();
+  final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   final _formKey1 = GlobalKey<FormState>();
   bool loading = false;
@@ -240,7 +240,7 @@ class _LogInState extends State<LogIn> {
                       if (_formKey.currentState!.validate() &&
                           _formKey1.currentState!.validate()) {
                         setState(() => loading = true);
-                        dynamic result = await _auth.signInWithEmailAndPassword(
+                        final result = await _auth.signInWithEmailAndPassword(
                             email, password);
                         if (result == null) {
                           setState(() {

@@ -2,36 +2,42 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:migraine_help_v1/Models/migraine.dart';
 
 class DatabaseService {
+  DatabaseService({required this.uid, FirebaseFirestore? firestore})
+      : _firestore = firestore ?? FirebaseFirestore.instance;
+
+  DatabaseService.withoutUID({FirebaseFirestore? firestore})
+      : uid = '',
+        _firestore = firestore ?? FirebaseFirestore.instance;
+
   final String uid;
-  DatabaseService({required this.uid});
+  final FirebaseFirestore _firestore;
 
-  DatabaseService.withoutUID() : uid = "";
+  CollectionReference<Map<String, dynamic>> get _migraineCollection =>
+      _firestore.collection('migraine');
 
-// collection reference
+  Future<void> updateUserData({
+    required String sugars,
+    required String name,
+    required int strength,
+  }) {
+    if (uid.isEmpty) {
+      throw StateError('A user id is required to update user data.');
+    }
 
-  final CollectionReference migraineCollection =
-      FirebaseFirestore.instance.collection('migraine');
-
-  Future updateUserData(String sugars, String name, int strength) async {
-    return await migraineCollection.doc(uid).set({
-      'sugars': sugars,
-      'name': name,
-      'strength': strength,
-    });
+    return _migraineCollection.doc(uid).set(
+          Migraine(name: name, sugars: sugars, strength: strength).toMap(),
+          SetOptions(merge: true),
+        );
   }
 
-// migraine list from snapshot
-
-  List<Migraine> _migraineListFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.docs.map((doc) {
-      return Migraine(
-          name: doc['name'] ?? '',
-          strength: doc['strength'] ?? 0,
-          sugars: doc['sugars'] ?? '0');
-    }).toList();
+  List<Migraine> _migraineListFromSnapshot(
+    QuerySnapshot<Map<String, dynamic>> snapshot,
+  ) {
+    return snapshot.docs
+        .map((document) => Migraine.fromMap(document.data()))
+        .toList(growable: false);
   }
 
-  Stream<List<Migraine>> get migraine {
-    return migraineCollection.snapshots().map(_migraineListFromSnapshot);
-  }
+  Stream<List<Migraine>> get migraine =>
+      _migraineCollection.snapshots().map(_migraineListFromSnapshot);
 }

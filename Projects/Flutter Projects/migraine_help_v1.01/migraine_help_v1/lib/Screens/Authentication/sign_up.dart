@@ -25,7 +25,7 @@ class _SignUpPageState extends State<SignUp> {
   final ImageProvider human_icon_1 =
       const AssetImage('assets/images/human_icon.png');
   bool agree = false;
-  final Authservice _auth = Authservice();
+  final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   final _formKey1 = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
@@ -392,7 +392,7 @@ class _SignUpPageState extends State<SignUp> {
                           _formKey3.currentState!.validate() &&
                           password == confirmpassword) {
                         setState(() => loading = true);
-                        dynamic result = await _auth
+                        final result = await _auth
                             .registerWithEmailAndPassword(email, password);
                         if (result == null) {
                           setState(() {
@@ -400,7 +400,6 @@ class _SignUpPageState extends State<SignUp> {
                             loading = false;
                           });
                         } else {
-                          print('Its working');
                         }
                       }
                     },

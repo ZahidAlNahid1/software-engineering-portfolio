@@ -27,7 +27,7 @@ class SideMenu extends StatelessWidget {
   final ImageProvider logout_1;
   final ImageProvider help_1;
   final ImageProvider aboutus_1;
-  final Authservice _auth = Authservice();
+  final AuthService _auth = AuthService();
   SideMenu({
     Key? key,
     this.activity_menu = const AssetImage('assets/images/activity.png'),

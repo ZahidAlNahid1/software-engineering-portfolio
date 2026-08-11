@@ -1,19 +1,34 @@
 # Migraine Help
 
-Migraine Help is a Flutter university project for recording migraine events and related context such as pain location, symptoms, activity, weather, and reports. The application demonstrates a multi-screen mobile UI backed by Firebase Authentication and Cloud Firestore.
+Migraine Help is a Flutter/Firebase university application for recording migraine events and related context such as pain location, activity, weather, and reports. It is being modernized as a portfolio project while preserving the original application flows.
 
-## Features represented in the codebase
+## What the project demonstrates
 
-- Firebase authentication and user session handling
-- Firestore-backed migraine/user data
-- Migraine pain/location detail flows
-- Activity and weather views
-- Reporting/upload-download screens
-- Profile, settings, help, and side-menu screens
+- Firebase Authentication session handling
+- Cloud Firestore persistence
 - Provider-based application state
-- Reusable image assets and custom visual layouts
+- Multi-screen Flutter navigation and form flows
+- Migraine pain/location tracking UI
+- Activity, weather, profile, settings, and report screens
+- Domain-model serialization and automated model tests
 
-## Project structure
+## Phase 2 modernization
+
+The first Phase 2 pass improves the code without a risky visual rewrite:
+
+- introduced a consistently named `AuthService` with typed method signatures;
+- isolated Firebase Authentication from the application `MyUser` model;
+- made `MyUser` and `Migraine` immutable;
+- added `Migraine.fromMap` and `toMap` serialization;
+- changed Firestore access to typed `CollectionReference<Map<String, dynamic>>` APIs;
+- added dependency injection seams for Firebase Auth and Firestore;
+- removed duplicate Flutter binding initialization and debug printing;
+- made application startup and Provider usage clearer;
+- added model tests and architecture/security/migration documentation.
+
+The original Adobe XD-derived screens are intentionally preserved during this pass. Replacing those layouts before the app is covered by tests would create unnecessary regression risk.
+
+## Structure
 
 ```text
 lib/
@@ -29,38 +44,40 @@ lib/
 ├── Side_Menu/
 ├── Weather/
 └── main.dart
+
+test/
+└── models/
+
+docs/
+├── ARCHITECTURE.md
+├── MIGRATION_TO_CURRENT_FLUTTER.md
+└── SECURITY.md
 ```
 
 ## Firebase setup
 
-The application expects a Firebase project configured for Authentication and Cloud Firestore. The Android project currently contains the Firebase configuration that accompanied the university project. For your own deployment, create your own Firebase application and replace platform configuration files with values from your Firebase project.
+For a fresh deployment, use a dedicated Firebase project with Authentication and Cloud Firestore enabled. Configure the application using the FlutterFire CLI and verify Firestore Security Rules before storing any real user data.
 
-Do not treat Firebase client configuration as server-side authorization. Firestore security rules and Firebase Authentication should enforce access to user data.
+The Firebase configuration that accompanied the university project should be treated as historical development configuration, not as production credentials or production authorization.
 
-## Running the project
+## Historical runtime baseline
 
-This project originated on the Flutter 2 / Dart 2 generation and its dependency versions have intentionally been preserved rather than blindly upgraded without a Flutter toolchain.
+The checked-in dependency constraints still describe the Flutter 2 / Dart 2 generation in which the university project was written. They are intentionally not mass-upgraded in this pass because the modernization environment does not contain a Flutter SDK with which to prove that a dependency migration builds.
 
-For the historical environment, install a compatible Flutter SDK and run:
+See [`docs/MIGRATION_TO_CURRENT_FLUTTER.md`](docs/MIGRATION_TO_CURRENT_FLUTTER.md) for the migration checklist.
+
+## Verification
+
+New pure model behavior is covered by tests in `test/models/migraine_test.dart`. On a compatible Flutter environment, run:
 
 ```bash
 flutter pub get
-flutter run
+flutter analyze
+flutter test
 ```
 
-For a current Flutter SDK, expect a dependency/API migration before production use. Recommended migration steps are:
+A current-Flutter migration should additionally pass a debug build before it is marked verified.
 
-1. run `flutter pub outdated`;
-2. upgrade Firebase/Flutter dependencies incrementally;
-3. run `dart fix --apply` where appropriate;
-4. run `flutter analyze` and `flutter test`;
-5. update Android/iOS build configuration using `flutter create .` only after committing/backing up custom platform files;
-6. verify authentication, Firestore reads/writes, and each navigation flow on a device/emulator.
+## Portfolio status
 
-## Current verification status
-
-The repository cleanup environment did not include the Flutter SDK, so this application was **not claimed as current-SDK build verified**. The source tree and repository artifacts were cleaned and documented while preserving the historical dependency baseline. See the root `PROJECT_STATUS.md` for the verified parts of the repository.
-
-## Portfolio notes
-
-This is one of the strongest projects in the repository because it demonstrates a complete application rather than an isolated exercise. A future portfolio-focused iteration should add automated widget/service tests, stronger error presentation around Firebase calls, typed service return values, and an incremental migration to current Flutter/Firebase packages.
+**Modernization in progress.** The service/model layer has begun moving toward production-style boundaries. The next verified milestone is a current Flutter/Firebase migration followed by UI smoke tests and targeted widget tests.

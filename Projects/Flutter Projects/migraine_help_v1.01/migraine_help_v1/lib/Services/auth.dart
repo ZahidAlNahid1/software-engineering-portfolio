@@ -1,77 +1,74 @@
-// ignore_for_file: avoid_print
-
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:migraine_help_v1/Models/myuser.dart';
 import 'package:migraine_help_v1/Services/database.dart';
-import '../Models/myuser.dart';
-import 'package:migraine_help_v1/Screens/Authentication/sign_up.dart';
 
-class Authservice {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+/// Thin authentication boundary around Firebase Authentication.
+///
+/// UI code receives the app's [MyUser] model instead of depending directly on
+/// Firebase user objects. Authentication failures are represented by `null` so
+/// the existing university UI remains backwards compatible; a future
+/// production iteration can replace this with a richer typed error result.
+class AuthService {
+  AuthService({FirebaseAuth? firebaseAuth})
+      : _auth = firebaseAuth ?? FirebaseAuth.instance;
 
-  // create user obj based on FirebaseUser
-  // create MyUser object based on User
-  MyUser? _userFromFirebaseUser(User? user) {
-    return user != null ? MyUser(uid: user.uid) : null;
+  final FirebaseAuth _auth;
+
+  MyUser? _fromFirebaseUser(User? user) {
+    return user == null ? null : MyUser(uid: user.uid);
   }
 
-  // auth change user stream
-  Stream<MyUser?> get user {
-    return _auth.authStateChanges().map(_userFromFirebaseUser);
-  }
+  Stream<MyUser?> get user => _auth.authStateChanges().map(_fromFirebaseUser);
 
-  // sign in anon
-  Future signInAnon() async {
+  Future<MyUser?> signInAnon() async {
     try {
-      UserCredential result = await _auth.signInAnonymously();
-      User? user = result.user;
-      return _userFromFirebaseUser(user!);
-    } catch (e) {
-      print(e.toString());
+      final credential = await _auth.signInAnonymously();
+      return _fromFirebaseUser(credential.user);
+    } on FirebaseAuthException {
       return null;
     }
   }
 
-  // sign in email password
-  Future signInWithEmailAndPassword(String email, String password) async {
+  Future<MyUser?> signInWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
     try {
-      UserCredential result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      User? user = result.user;
-
-      // create a new document for the user with the uid
-
-      return user;
-    } catch (error) {
-      print(error.toString());
+      final credential = await _auth.signInWithEmailAndPassword(
+        email: email.trim(),
+        password: password,
+      );
+      return _fromFirebaseUser(credential.user);
+    } on FirebaseAuthException {
       return null;
     }
   }
 
-  // register with email & password
-  Future registerWithEmailAndPassword(String email, String password) async {
+  Future<MyUser?> registerWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
     try {
-      UserCredential result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      User? user = result.user;
+      final credential = await _auth.createUserWithEmailAndPassword(
+        email: email.trim(),
+        password: password,
+      );
+      final firebaseUser = credential.user;
+      if (firebaseUser == null) {
+        return null;
+      }
 
-      await DatabaseService(uid: user!.uid)
-          .updateUserData('0', 'username', 100);
+      await DatabaseService(uid: firebaseUser.uid).updateUserData(
+        sugars: '0',
+        name: 'username',
+        strength: 100,
+      );
 
-      return _userFromFirebaseUser(user);
-    } catch (error) {
-      print(error.toString());
+      return _fromFirebaseUser(firebaseUser);
+    } on FirebaseAuthException {
       return null;
     }
   }
 
-  // sign out
-
-  Future signOut() async {
-    try {
-      return await FirebaseAuth.instance.signOut();
-    } catch (error) {
-      print(error.toString());
-      return null;
-    }
-  }
+  Future<void> signOut() => _auth.signOut();
 }
