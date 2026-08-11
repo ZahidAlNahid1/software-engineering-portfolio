@@ -1,0 +1,20 @@
+name: C++ Build
+
+on:
+  push:
+    paths:
+      - 'Projects/C++ Projects/**'
+      - '.github/workflows/cpp-build.yml'
+  pull_request:
+    paths:
+      - 'Projects/C++ Projects/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S "Projects/C++ Projects" -B build/cpp
+      - name: Build
+        run: cmake --build build/cpp --parallel

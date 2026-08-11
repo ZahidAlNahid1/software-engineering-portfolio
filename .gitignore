@@ -1,0 +1,52 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# C / C++ build artifacts
+build/
+cmake-build-*/
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+*.dylib
+*.tags
+.codelite/
+.ctagsd/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+**/android/local.properties
+**/android/.gradle/
+**/ios/Pods/
+**/ios/.symlinks/
+
+# Generated project data / local runtime state
+employees.csv
+items.txt
+Example.txt
+
+# Office temporary files
+~$*
