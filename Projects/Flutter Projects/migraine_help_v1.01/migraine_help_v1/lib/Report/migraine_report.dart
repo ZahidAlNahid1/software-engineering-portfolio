@@ -19,7 +19,7 @@ class MigraineReport extends StatefulWidget {
         const AssetImage('assets/images/migraine_big.png'),
   }) : super(key: key);
   @override
-  _MigraineReport createState() => _MigraineReport();
+  State<MigraineReport> createState() => _MigraineReport();
 }
 
 class _MigraineReport extends State<MigraineReport> {

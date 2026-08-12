@@ -16,7 +16,7 @@ class MigraineSide extends StatefulWidget {
     this.face_side_1 = const AssetImage('assets/images/face_side.png'),
   }) : super(key: key);
   @override
-  _MigraineSideState createState() => _MigraineSideState();
+  State<MigraineSide> createState() => _MigraineSideState();
 }
 
 class _MigraineSideState extends State<MigraineSide> {
@@ -157,7 +157,6 @@ class _MigraineSideState extends State<MigraineSide> {
             Pin(size: 125.0, middle: 0.5021),
             Pin(size: 32.0, end: 95.0),
             child: TextButton(
-              child: Text('Continue'),
               style: TextButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -183,6 +182,7 @@ class _MigraineSideState extends State<MigraineSide> {
                   ),
                 );
               },
+              child: Text('Continue'),
             ),
           ),
           //'Back' Button
@@ -190,7 +190,6 @@ class _MigraineSideState extends State<MigraineSide> {
             Pin(size: 125.0, middle: 0.5021),
             Pin(size: 32.0, end: 43.0),
             child: TextButton(
-              child: Text('Back'),
               style: TextButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -216,6 +215,7 @@ class _MigraineSideState extends State<MigraineSide> {
                   ),
                 );
               },
+              child: Text('Back'),
             ),
           ),
           //Back Button

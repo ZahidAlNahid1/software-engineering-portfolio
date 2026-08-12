@@ -20,11 +20,12 @@ class WeatherPage extends StatefulWidget {
 }
 
 class WeatherPageState extends State<WeatherPage> {
-  getData() async {
-    fetchData("2.9198", "101.7809", "Bangi").then((value) {
-      currentTemp = value[0];
+  Future<void> getData() async {
+    final value = await fetchData("2.9198", "101.7809", "Bangi");
+    currentTemp = value[0];
+    if (mounted) {
       setState(() {});
-    });
+    }
   }
 
   @override
@@ -239,7 +240,7 @@ class CurrentWeatherState extends State<CurrentWeather> {
             Pin(size: 114.0, middle: 0.2358),
             Pin(size: 40.0, middle: 0.6955),
             child: Text(
-              "Direction " + (currentTemp?.degree ?? ""), //Link to dataset
+              "Direction ${currentTemp?.degree ?? ""}", //Link to dataset
               style: TextStyle(
                 fontFamily: 'Segoe UI',
                 fontSize: 16,
@@ -256,7 +257,7 @@ class CurrentWeatherState extends State<CurrentWeather> {
             Pin(size: 102.0, middle: 0.2674),
             Pin(size: 21.0, middle: 0.7349),
             child: Text(
-              (currentTemp?.wind.toString() ?? "") + " Kmph", //Link to dataset
+              "${currentTemp?.wind ?? ""} Kmph", //Link to dataset
               style: TextStyle(
                 fontFamily: 'Segoe UI',
                 fontSize: 16,
@@ -283,9 +284,7 @@ class CurrentWeatherState extends State<CurrentWeather> {
             Pin(size: 94.0, middle: 0.7274),
             Pin(size: 53.0, middle: 0.6438),
             child: Text(
-              (currentTemp?.current.toString() ?? "") +
-                  "\u00B0" +
-                  "C", //Link to dataset
+              "${currentTemp?.current ?? ""}\u00B0C", //Link to dataset
               style: TextStyle(
                 fontFamily: 'Segoe UI',
                 fontSize: 40,
@@ -319,7 +318,7 @@ class CurrentWeatherState extends State<CurrentWeather> {
             Pin(size: 34.0, middle: 0.6748),
             Pin(size: 21.0, middle: 0.7349),
             child: Text(
-              (currentTemp?.humidity.toString() ?? "") + "%", //Link to dataset
+              "${currentTemp?.humidity ?? ""}%", //Link to dataset
               style: TextStyle(
                 fontFamily: 'Segoe UI',
                 fontSize: 16,

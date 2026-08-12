@@ -15,7 +15,7 @@ class WeatherReport extends StatefulWidget {
     this.cloudy_big_1 = const AssetImage('assets/images/cloudy_big.png'),
   }) : super(key: key);
   @override
-  _WeatherReport createState() => _WeatherReport();
+  State<WeatherReport> createState() => _WeatherReport();
 }
 
 class _WeatherReport extends State<WeatherReport> {

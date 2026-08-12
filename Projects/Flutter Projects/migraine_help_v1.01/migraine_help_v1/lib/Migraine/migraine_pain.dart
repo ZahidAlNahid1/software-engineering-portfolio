@@ -30,7 +30,7 @@ class MigrainePain extends StatefulWidget {
     this.topstate = '',
   }) : super(key: key);
   @override
-  _MigrainePainState createState() => _MigrainePainState();
+  State<MigrainePain> createState() => _MigrainePainState();
 }
 
 class _MigrainePainState extends State<MigrainePain> {
@@ -110,6 +110,12 @@ class _MigrainePainState extends State<MigrainePain> {
             Pin(size: 140.0, middle: 0.3500),
             Pin(size: 50.0, middle: 0.1774),
             child: TextButton(
+              onPressed: () {
+                setState(() {
+                  pressed = !pressed;
+                });
+                state = 'Severe';
+              },
               child: Row(
                 children: <Widget>[
                   ImageIcon(
@@ -133,12 +139,6 @@ class _MigrainePainState extends State<MigrainePain> {
                   ),
                 ],
               ),
-              onPressed: () {
-                setState(() {
-                  pressed = !pressed;
-                });
-                state = 'Severe';
-              },
             ),
           ),
           //Very Bad
@@ -146,6 +146,12 @@ class _MigrainePainState extends State<MigrainePain> {
             Pin(size: 140.0, middle: 0.3500),
             Pin(size: 50.0, middle: 0.3045),
             child: TextButton(
+              onPressed: () {
+                setState(() {
+                  pressed1 = !pressed1;
+                });
+                state = 'Very Bad';
+              },
               child: Row(
                 children: <Widget>[
                   ImageIcon(
@@ -170,12 +176,6 @@ class _MigrainePainState extends State<MigrainePain> {
                   ),
                 ],
               ),
-              onPressed: () {
-                setState(() {
-                  pressed1 = !pressed1;
-                });
-                state = 'Very Bad';
-              },
             ),
           ),
           //Bad
@@ -183,6 +183,12 @@ class _MigrainePainState extends State<MigrainePain> {
             Pin(size: 140.0, middle: 0.3500),
             Pin(size: 50.0, middle: 0.4316),
             child: TextButton(
+              onPressed: () {
+                setState(() {
+                  pressed2 = !pressed2;
+                });
+                state = 'Bad';
+              },
               child: Row(
                 children: <Widget>[
                   ImageIcon(
@@ -207,12 +213,6 @@ class _MigrainePainState extends State<MigrainePain> {
                   ),
                 ],
               ),
-              onPressed: () {
-                setState(() {
-                  pressed2 = !pressed2;
-                });
-                state = 'Bad';
-              },
             ),
           ),
           //Mild
@@ -220,6 +220,12 @@ class _MigrainePainState extends State<MigrainePain> {
             Pin(size: 140.0, middle: 0.3500),
             Pin(size: 50.0, middle: 0.5587),
             child: TextButton(
+              onPressed: () {
+                setState(() {
+                  pressed3 = !pressed3;
+                });
+                state = 'Mild';
+              },
               child: Row(
                 children: <Widget>[
                   ImageIcon(
@@ -244,12 +250,6 @@ class _MigrainePainState extends State<MigrainePain> {
                   ),
                 ],
               ),
-              onPressed: () {
-                setState(() {
-                  pressed3 = !pressed3;
-                });
-                state = 'Mild';
-              },
             ),
           ),
           //Happy
@@ -257,6 +257,12 @@ class _MigrainePainState extends State<MigrainePain> {
             Pin(size: 140.0, middle: 0.3500),
             Pin(size: 50.0, middle: 0.6858),
             child: TextButton(
+              onPressed: () {
+                setState(() {
+                  pressed4 = !pressed4;
+                });
+                state = 'Happy';
+              },
               child: Row(
                 children: <Widget>[
                   ImageIcon(
@@ -281,12 +287,6 @@ class _MigrainePainState extends State<MigrainePain> {
                   ),
                 ],
               ),
-              onPressed: () {
-                setState(() {
-                  pressed4 = !pressed4;
-                });
-                state = 'Happy';
-              },
             ),
           ),
           //Continue Button
@@ -294,7 +294,6 @@ class _MigrainePainState extends State<MigrainePain> {
             Pin(size: 125.0, middle: 0.5021),
             Pin(size: 32.0, end: 95.0),
             child: TextButton(
-              child: Text('Continue'),
               style: TextButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -321,6 +320,7 @@ class _MigrainePainState extends State<MigrainePain> {
                   ),
                 );
               },
+              child: Text('Continue'),
             ),
           ),
           //'Back' Button
@@ -328,7 +328,6 @@ class _MigrainePainState extends State<MigrainePain> {
             Pin(size: 125.0, middle: 0.5021),
             Pin(size: 32.0, end: 43.0),
             child: TextButton(
-              child: Text('Back'),
               style: TextButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -353,6 +352,7 @@ class _MigrainePainState extends State<MigrainePain> {
                   ),
                 );
               },
+              child: Text('Back'),
             ),
           ),
           //Back Icon Button

@@ -124,7 +124,6 @@ class ChangeLocation extends StatelessWidget {
             Pin(size: 125.0, middle: 0.5021),
             Pin(size: 32.0, end: 95.0),
             child: TextButton(
-              child: Text('Confirm'),
               style: TextButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -159,6 +158,7 @@ class ChangeLocation extends StatelessWidget {
                   ),
                 );
               },
+              child: Text('Confirm'),
             ),
           ),
           //Go Back Button

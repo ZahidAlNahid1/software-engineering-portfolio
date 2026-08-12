@@ -15,7 +15,7 @@ class ActivityReport extends StatefulWidget {
     this.activity_big_1 = const AssetImage('assets/images/activity_big.png'),
   }) : super(key: key);
   @override
-  _ActivityReport createState() => _ActivityReport();
+  State<ActivityReport> createState() => _ActivityReport();
 }
 
 class _ActivityReport extends State<ActivityReport> {

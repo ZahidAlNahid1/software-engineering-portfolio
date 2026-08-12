@@ -18,7 +18,7 @@ class SignUp extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  State<SignUp> createState() => _SignUpPageState();
 }
 
 class _SignUpPageState extends State<SignUp> {
@@ -349,7 +349,6 @@ class _SignUpPageState extends State<SignUp> {
                   Pin(size: 125.0, middle: 0.5021),
                   Pin(size: 32.0, middle: 0.7000),
                   child: TextButton(
-                    child: Text('Login'),
                     style: TextButton.styleFrom(
                       shape: const RoundedRectangleBorder(
                           borderRadius:
@@ -365,6 +364,7 @@ class _SignUpPageState extends State<SignUp> {
                     onPressed: () async {
                       widget.toggleView();
                     },
+                    child: Text('Login'),
                   ),
                 ),
                 //Signup Button
@@ -372,7 +372,6 @@ class _SignUpPageState extends State<SignUp> {
                   Pin(size: 125.0, middle: 0.5021),
                   Pin(size: 32.0, middle: 0.7800),
                   child: TextButton(
-                    child: Text('Sign Up'),
                     style: TextButton.styleFrom(
                       shape: const RoundedRectangleBorder(
                           borderRadius:
@@ -403,6 +402,7 @@ class _SignUpPageState extends State<SignUp> {
                         }
                       }
                     },
+                    child: Text('Sign Up'),
                   ),
                 ),
               ],

@@ -223,7 +223,6 @@ class _LogInState extends State<LogIn> {
                   Pin(size: 125.0, middle: 0.5021),
                   Pin(size: 32.0, middle: 0.6053),
                   child: TextButton(
-                    child: Text('Log In'),
                     style: TextButton.styleFrom(
                       shape: const RoundedRectangleBorder(
                           borderRadius:
@@ -250,6 +249,7 @@ class _LogInState extends State<LogIn> {
                         }
                       }
                     },
+                    child: Text('Log In'),
                   ),
                 ),
                 //Signup button
@@ -257,7 +257,6 @@ class _LogInState extends State<LogIn> {
                   Pin(size: 125.0, middle: 0.5021),
                   Pin(size: 32.0, middle: 0.6809),
                   child: TextButton(
-                    child: Text('Sign Up'),
                     style: TextButton.styleFrom(
                       shape: const RoundedRectangleBorder(
                           borderRadius:
@@ -273,6 +272,7 @@ class _LogInState extends State<LogIn> {
                     onPressed: () {
                       widget.toggleView();
                     },
+                    child: Text('Sign Up'),
                   ),
                 )
               ],

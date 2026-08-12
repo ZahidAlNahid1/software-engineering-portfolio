@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 class MigraineList extends StatefulWidget {
   @override
-  _MigraineListState createState() => _MigraineListState();
+  State<MigraineList> createState() => _MigraineListState();
 }
 
 class _MigraineListState extends State<MigraineList> {

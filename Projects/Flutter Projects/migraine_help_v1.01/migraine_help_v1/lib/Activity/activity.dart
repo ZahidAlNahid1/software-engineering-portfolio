@@ -241,7 +241,6 @@ class _Activity extends State<Activity> {
             Pin(size: 125.0, middle: 0.5021),
             Pin(size: 32.0, end: 43.0),
             child: TextButton(
-              child: Text('Confirm'),
               style: TextButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -267,6 +266,7 @@ class _Activity extends State<Activity> {
                   ),
                 );
               },
+              child: Text('Confirm'),
             ),
           ),
 
@@ -275,7 +275,6 @@ class _Activity extends State<Activity> {
             Pin(size: 125.0, middle: 0.5021),
             Pin(size: 32.0, end: 95.0),
             child: TextButton(
-              child: Text('Cancel'),
               style: TextButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -301,6 +300,7 @@ class _Activity extends State<Activity> {
                   ),
                 );
               },
+              child: Text('Cancel'),
             ),
           ),
           //Back Icon Button

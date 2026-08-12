@@ -204,7 +204,6 @@ class MyProfile extends StatelessWidget {
             Pin(size: 125.0, middle: 0.5021),
             Pin(size: 32.0, middle: 0.8191),
             child: TextButton(
-              child: Text('Edit'),
               style: TextButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -217,6 +216,7 @@ class MyProfile extends StatelessWidget {
                 ),
               ),
               onPressed: () {},
+              child: Text('Edit'),
             ),
           ),
           //Back Button

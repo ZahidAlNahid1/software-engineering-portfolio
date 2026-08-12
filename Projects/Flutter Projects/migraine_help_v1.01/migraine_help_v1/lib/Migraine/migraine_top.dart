@@ -19,7 +19,7 @@ class MigraineTop extends StatefulWidget {
     this.sidestate = '',
   }) : super(key: key);
   @override
-  _MigraineTopState createState() => _MigraineTopState();
+  State<MigraineTop> createState() => _MigraineTopState();
 }
 
 class _MigraineTopState extends State<MigraineTop> {
@@ -186,7 +186,6 @@ class _MigraineTopState extends State<MigraineTop> {
             Pin(size: 125.0, middle: 0.5021),
             Pin(size: 32.0, end: 95.0),
             child: TextButton(
-              child: Text('Continue'),
               style: TextButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -218,6 +217,7 @@ class _MigraineTopState extends State<MigraineTop> {
                   ),
                 );
               },
+              child: Text('Continue'),
             ),
           ),
           //'Back' Button
@@ -225,7 +225,6 @@ class _MigraineTopState extends State<MigraineTop> {
             Pin(size: 125.0, middle: 0.5021),
             Pin(size: 32.0, end: 43.0),
             child: TextButton(
-              child: Text('Back'),
               style: TextButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
@@ -250,6 +249,7 @@ class _MigraineTopState extends State<MigraineTop> {
                   ),
                 );
               },
+              child: Text('Back'),
             ),
           ),
           //Back Button
