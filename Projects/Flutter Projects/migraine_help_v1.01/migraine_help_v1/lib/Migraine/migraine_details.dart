@@ -72,7 +72,7 @@ class _MigraineDetails extends State<MigraineDetails> {
                   image: widget.migraine_big_pain_1,
                   fit: BoxFit.fill,
                   colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.1), BlendMode.dstIn),
+                      Colors.black.withValues(alpha: 0.1), BlendMode.dstIn),
                 ),
               ),
             ),
@@ -313,12 +313,12 @@ class _MigraineDetails extends State<MigraineDetails> {
                   ),
                 );
                 //Add confirmation of the report
-                print(widget.sidestate +
+                debugPrint(widget.sidestate +
                     ' ' +
                     widget.topstate +
                     ' ' +
                     widget.painstate);
-                print(symptom + ' ' + aura + ' ' + trigger + ' ' + duration);
+                debugPrint(symptom + ' ' + aura + ' ' + trigger + ' ' + duration);
               },
             ),
           ),

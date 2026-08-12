@@ -6,7 +6,6 @@ import 'package:adobe_xd/page_link.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
-import '../Services/weather_dataset.dart';
 import '../Screens/Home/dashboard.dart';
 import 'package:migraine_help_v1/Services/weather_dataset.dart';
 
@@ -24,11 +23,7 @@ class WeatherPageState extends State<WeatherPage> {
   getData() async {
     fetchData("2.9198", "101.7809", "Bangi").then((value) {
       currentTemp = value[0];
-      print(currentTemp);
       setState(() {});
-      print(currentTemp?.image);
-      print(currentTemp?.wind);
-      print(currentTemp?.humidity);
     });
   }
 
@@ -100,7 +95,7 @@ class CurrentWeatherState extends State<CurrentWeather> {
                       (currentTemp?.image ?? "assets/images/rain.png")),
                   fit: BoxFit.fill,
                   colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.1), BlendMode.dstIn),
+                      Colors.black.withValues(alpha: 0.1), BlendMode.dstIn),
                 ),
               ),
             ),
@@ -114,7 +109,7 @@ class CurrentWeatherState extends State<CurrentWeather> {
               style: TextStyle(
                 fontFamily: 'Segoe UI',
                 fontSize: 16,
-                color: const Color(0xffffffff),
+                color: Color(0xffffffff),
                 height: 0.75,
               ),
               textHeightBehavior:
@@ -162,7 +157,7 @@ class CurrentWeatherState extends State<CurrentWeather> {
               style: TextStyle(
                 fontFamily: 'Segoe UI',
                 fontSize: 30,
-                color: const Color(0xffffffff),
+                color: Color(0xffffffff),
                 height: 0.4,
               ),
               textHeightBehavior:
@@ -381,7 +376,7 @@ class CurrentWeatherState extends State<CurrentWeather> {
                 weekdayStyle: TextStyle(
                   fontFamily: 'Montserrat',
                   fontSize: 11,
-                  color: const Color(0xffffffff),
+                  color: Color(0xffffffff),
                   letterSpacing: 0.9999999694824219,
                   fontWeight: FontWeight.w500,
                   height: 1.8181818181818181,
@@ -389,7 +384,7 @@ class CurrentWeatherState extends State<CurrentWeather> {
                 weekendStyle: TextStyle(
                   fontFamily: 'Montserrat',
                   fontSize: 11,
-                  color: const Color(0xffffffff),
+                  color: Color(0xffffffff),
                   letterSpacing: 0.9999999694824219,
                   fontWeight: FontWeight.w500,
                   height: 1.8181818181818181,
@@ -411,7 +406,7 @@ class CurrentWeatherState extends State<CurrentWeather> {
                   fontWeight: FontWeight.w500,
                 ),
                 todayDecoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.0),
+                  color: Colors.blue.withValues(alpha: 0.0),
                   shape: BoxShape.circle,
                 ),
                 selectedDecoration: BoxDecoration(
@@ -443,9 +438,3 @@ class CurrentWeatherState extends State<CurrentWeather> {
 
 const String _svg_wd336p =
     '<svg viewBox="180.5 480.0 1.0 100.0" ><path transform="translate(180.5, 480.0)" d="M 0 0 L 0 100" fill="none" stroke="#ffffff" stroke-width="1" stroke-miterlimit="4" stroke-linecap="butt" /></svg>';
-const String _svg_s85h00 =
-    '<svg viewBox="240.5 712.5 1.0 50.0" ><path transform="translate(240.5, 712.0)" d="M 0 0.5 L 0 5.5 L 0 50.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-miterlimit="4" stroke-linecap="butt" /></svg>';
-const String _svg_aelur =
-    '<svg viewBox="300.5 711.5 1.0 50.0" ><path transform="translate(300.5, 711.5)" d="M 0 0 L 0 50" fill="none" stroke="#ffffff" stroke-width="1" stroke-miterlimit="4" stroke-linecap="butt" /></svg>';
-const String _svg_qrj66h =
-    '<svg viewBox="180.5 712.5 1.0 50.0" ><path transform="translate(180.5, 712.5)" d="M 0 0 L 0 50" fill="none" stroke="#ffffff" stroke-width="1" stroke-miterlimit="4" stroke-linecap="butt" /></svg>';

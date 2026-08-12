@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new
 
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
@@ -67,7 +66,7 @@ class _MigraineTopState extends State<MigraineTop> {
                   image: widget.migraine_big_pain_1,
                   fit: BoxFit.fill,
                   colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.1), BlendMode.dstIn),
+                      Colors.black.withValues(alpha: 0.1), BlendMode.dstIn),
                 ),
               ),
             ),
@@ -99,7 +98,7 @@ class _MigraineTopState extends State<MigraineTop> {
               iconSize: 50,
               onPressed: () {
                 state = 'Bottom Left';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),
@@ -112,7 +111,7 @@ class _MigraineTopState extends State<MigraineTop> {
               iconSize: 50,
               onPressed: () {
                 state = 'Bottom Right';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),
@@ -125,7 +124,7 @@ class _MigraineTopState extends State<MigraineTop> {
               iconSize: 50,
               onPressed: () {
                 state = 'Middle Left';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),
@@ -138,7 +137,7 @@ class _MigraineTopState extends State<MigraineTop> {
               iconSize: 50,
               onPressed: () {
                 state = 'Middle Right';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),
@@ -151,7 +150,7 @@ class _MigraineTopState extends State<MigraineTop> {
               iconSize: 50,
               onPressed: () {
                 state = 'Top Left';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),
@@ -164,7 +163,7 @@ class _MigraineTopState extends State<MigraineTop> {
               iconSize: 50,
               onPressed: () {
                 state = 'Top Right';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),
@@ -177,7 +176,7 @@ class _MigraineTopState extends State<MigraineTop> {
               iconSize: 50,
               onPressed: () {
                 state = 'Top View';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),*/

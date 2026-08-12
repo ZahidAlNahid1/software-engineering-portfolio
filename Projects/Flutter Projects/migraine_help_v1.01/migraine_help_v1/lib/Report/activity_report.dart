@@ -64,7 +64,7 @@ class _ActivityReport extends State<ActivityReport> {
                   image: widget.activity_big_1,
                   fit: BoxFit.fill,
                   colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.1), BlendMode.dstIn),
+                      Colors.black.withValues(alpha: 0.1), BlendMode.dstIn),
                 ),
               ),
             ),
@@ -207,7 +207,7 @@ class _ActivityReport extends State<ActivityReport> {
                   fontWeight: FontWeight.w500,
                 ),
                 todayDecoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.0),
+                  color: Colors.blue.withValues(alpha: 0.0),
                   shape: BoxShape.circle,
                 ),
                 selectedDecoration: BoxDecoration(

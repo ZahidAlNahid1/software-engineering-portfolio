@@ -68,7 +68,7 @@ class _MigraineReport extends State<MigraineReport> {
                   image: widget.migraine_big_pain_1,
                   fit: BoxFit.fill,
                   colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.1), BlendMode.dstIn),
+                      Colors.black.withValues(alpha: 0.1), BlendMode.dstIn),
                 ),
               ),
             ),
@@ -211,7 +211,7 @@ class _MigraineReport extends State<MigraineReport> {
                   fontWeight: FontWeight.w500,
                 ),
                 todayDecoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.0),
+                  color: Colors.blue.withValues(alpha: 0.0),
                   shape: BoxShape.circle,
                 ),
                 selectedDecoration: BoxDecoration(

@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
 import '../Screens/Home/dashboard.dart';
@@ -64,7 +63,7 @@ class _MigraineSideState extends State<MigraineSide> {
                   image: widget.migraine_big_pain_1,
                   fit: BoxFit.fill,
                   colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.1), BlendMode.dstIn),
+                      Colors.black.withValues(alpha: 0.1), BlendMode.dstIn),
                 ),
               ),
             ),
@@ -96,7 +95,7 @@ class _MigraineSideState extends State<MigraineSide> {
               iconSize: 50,
               onPressed: () {
                 state = 'Side View';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),
@@ -109,7 +108,7 @@ class _MigraineSideState extends State<MigraineSide> {
               iconSize: 50,
               onPressed: () {
                 state = 'Side Eye';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),
@@ -122,7 +121,7 @@ class _MigraineSideState extends State<MigraineSide> {
               iconSize: 50,
               onPressed: () {
                 state = 'Side Forehead';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),
@@ -135,7 +134,7 @@ class _MigraineSideState extends State<MigraineSide> {
               iconSize: 50,
               onPressed: () {
                 state = 'Side Jaw';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),
@@ -148,7 +147,7 @@ class _MigraineSideState extends State<MigraineSide> {
               iconSize: 50,
               onPressed: () {
                 state = 'Tooth';
-                print(state);
+                debugPrint(state);
               },
             ),
           ),

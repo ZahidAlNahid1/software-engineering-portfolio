@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
@@ -44,7 +43,7 @@ Future<List> fetchData(String lat, String lon, String city) async {
     var res = json.decode(response.body);
     //current Temp
     var current = res["list"];
-    //print(res);
+    //debugPrint(res);
     Weather currentTemp = Weather(
       current: current?[0]["main"]["temp"]?.round() ?? 0,
       min: current?[0]["main"]["temp_min"]?.round() ?? 0,
@@ -78,7 +77,6 @@ Future<List> fetchData(String lat, String lon, String city) async {
       );
       sevenDay.add(hourly);
     }
-    print(sevenDay);
     return [currentTemp, sevenDay];
   }
   return [null, null, null, null];
